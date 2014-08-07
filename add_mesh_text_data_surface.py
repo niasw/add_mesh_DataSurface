@@ -18,6 +18,11 @@
 #
 # Contributed to by
 #   Sun Sibai <niasw@pku.edu.cn>
+#
+# Referrence
+#   Blender Addon: add_mesh_extra_objects > add_mesh_3d_function_surface
+#
+
 '''
 bl_info = {
   "name": "Text Data Surfaces",

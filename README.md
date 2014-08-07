@@ -31,6 +31,9 @@ Let's try the `loop` and `flip` check box. After clicking `loop`, you should see
 
 Ok, that's all of this example. I hope this addon will help.
 
-Thank you.
+Oh, one more point: some scripts were inspired from Blender Addon `add_mesh_extra_objects` > `add_mesh_3d_function_surface`. Thank authors of those scripts.
 
+And thank you.
+
+Best regards,
 Sun Sibai <niasw@pku.edu.cn>
