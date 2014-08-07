@@ -38,6 +38,7 @@ bl_info = {
 '''
 
 import bpy
+import addon_utils
 import re
 from mathutils import *
 from math import *
@@ -184,13 +185,13 @@ class AddTextDataSurface(bpy.types.Operator):
 
     xFile = StringProperty(name="Data File of X(U,V)",
         description="U,V: index coordinates of nodes; X: x coordinate of nodes. (Matrix Text)",
-        default="./Xdata.txt", subtype="FILE_PATH")
+        default=addon_utils.paths()[0]+"/add_mesh_DataSurface/Xdata.txt", subtype="FILE_PATH")
     yFile = StringProperty(name="Data File of Y(U,V)",
         description="U,V: index coordinates of nodes; Y: y coordinate of nodes. (Matrix Text)",
-        default="./Ydata.txt", subtype="FILE_PATH")
+        default=addon_utils.paths()[0]+"/add_mesh_DataSurface/Ydata.txt", subtype="FILE_PATH")
     zFile = StringProperty(name="Data File of Z(U,V)",
         description="U,V: index coordinates of nodes; Z: z coordinate of nodes. (Matrix Text)",
-        default="./Zdata.txt", subtype="FILE_PATH")
+        default=addon_utils.paths()[0]+"/add_mesh_DataSurface/Zdata.txt", subtype="FILE_PATH")
     loop = BoolProperty(name="Loop in U Direction",
         description="Loop in U direction or not?",
         default=False)
