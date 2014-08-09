@@ -32,7 +32,7 @@ bl_info = {
   "location": "View3D > Add > Mesh",
   "description": "Create Objects using Text Data Files",
   "warning": "",
-  "wiki_url": "https://github.com/niasw/add_mesh_DataSurface",
+  "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Add_Mesh/Data_Surface/Text_Data_Surface",
   "category": "Add Mesh"
 }
 '''

@@ -26,7 +26,7 @@ bl_info = {
   "blender": (2, 71, 0),
   "location": "View3D > Add > Mesh",
   "description": "Create Object using Data Files.",
-  "wiki_url": "https://github.com/niasw/add_mesh_DataSurface",
+  "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Add_Mesh/Data_Surface",
   "category": "Add Mesh"
 }
 
