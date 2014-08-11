@@ -28,7 +28,7 @@ If you are seeking for addons for analytical expressions, please go to the addon
 ### Installation
 
 To install this addon, please copy all the scripts and data files to the addon path.
-* Download the source file from <https://github.com/niasw/add_mesh_DataSurface/archive/master.zip>
+* Download the source file from [here](https://github.com/niasw/add_mesh_DataSurface/archive/master.zip) and extract to a folder `add_mesh_DataSurface`
 * or use `git clone https://github.com/niasw/add_mesh_DataSurface`.
 
 Then copy directory `add_mesh_DataSurface` to Blender addon path. If you don't know where is the addon path, please open your Blender, and run scripts below in the Python Console:
@@ -82,9 +82,15 @@ This addon has been tested on Ubuntu 12.04, Blender 2.71a, Python 3.2 (bundled),
 It may also work with Blender versions &lt; 2.71, but not tested yet.
 
 ### Troubleshooting
-"Add-on does not appear on the list."
+* "Add-on does not appear on the list."
 
 Check if you have installed this addon. Make sure the ".py" files are in the addon path properly. Make sure you have enabled this addon in `User Preferences`.
+
+* "Error combining coordinate data: Traceback (most recent call last):"
+* " ... "
+* "FileNotFoundError: [Errno 2] No such file or directory: '.../add_mesh_Surface/Xdata.txt' "
+
+This message means Blender did not find the data files. When you downloaded it as a zip file, did you extract the folder as `add_mesh_DataSurface` instead of the default `add_mesh_DataSurface-master`? If not, please rename this folder under addon path as `add_mesh_DataSurface`.
 
 ### Support
 To raise a bug report, you may issue it on [here(github-issues)](https://github.com/niasw/add_mesh_DataSurface/issues), or [here(developer.blender.org-task)](https://developer.blender.org/T41352).
@@ -92,7 +98,7 @@ To raise a bug report, you may issue it on [here(github-issues)](https://github.
 To contact with me, please write an email to <niasw@pku.edu.cn>.
 
 ### Thanks
-Some scripts were inspired from Blender addon `add_mesh_extra_objects` > `add_mesh_3d_function_surface`. Thank authors of those scripts.
+Some scripts ("create_mesh_and_object" and "makeFaces" methods in `add_mesh_text_data_surface.py`) were from Blender addon [add_mesh_extra_objects](http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Add_Mesh/Add_Extra). Thank authors of that addon.
 
 And thank you.
 

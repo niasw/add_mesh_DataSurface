@@ -20,7 +20,7 @@
 #   Sun Sibai <niasw@pku.edu.cn>
 #
 # Referrence
-#   Blender Addon: add_mesh_extra_objects (thank them for 'create_mesh_and_object' and 'makeFace' methods)
+#   Blender Addon: add_mesh_extra_objects (thank them for 'create_mesh_and_object' and 'makeFaces' methods)
 #
 
 '''
