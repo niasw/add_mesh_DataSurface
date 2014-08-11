@@ -98,7 +98,9 @@ To raise a bug report, you may issue it on [here(github-issues)](https://github.
 To contact with me, please write an email to <niasw@pku.edu.cn>.
 
 ### Thanks
-Some scripts ("create_mesh_and_object" and "makeFaces" methods in `add_mesh_text_data_surface.py`) were from Blender addon [add_mesh_extra_objects](http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Add_Mesh/Add_Extra). Thank authors of that addon.
+Some scripts ("create_mesh_and_object" and "makeFaces" methods in `add_mesh_text_data_surface.py`) were from Blender addon [add_mesh_extra_objects](http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Add_Mesh/Add_Extra).
+
+Thank authors of that addon.
 
 And thank you.
 
