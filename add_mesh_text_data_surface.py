@@ -20,7 +20,7 @@
 #   Sun Sibai <niasw@pku.edu.cn>
 #
 # Referrence
-#   Blender Addon: add_mesh_extra_objects > add_mesh_3d_function_surface
+#   Blender Addon: add_mesh_extra_objects (thank them for 'create_mesh_and_object' and 'makeFace' methods)
 #
 
 '''
@@ -40,8 +40,6 @@ bl_info = {
 import bpy
 import addon_utils
 import re
-from mathutils import *
-from math import *
 from bpy.props import *
 
 # Create a new mesh and object from verts/edges/faces.
