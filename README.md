@@ -7,7 +7,9 @@ DataSurface is a Blender Addon to create Object using Data Files.
 
 wiki <http://wiki.blender.org/index.php/Extensions:2.5/Py/Scripts/Add_Mesh/Data_Surface>
 
-Copyleft (*) 2014 Sun Sibai (niasw) <niasw@pku.edu.cn>
+Copyleft (*) 2014 Sun Sibai (niasw) <niasw@pku.edu.cn>, Pontiac
+
+("create_mesh_and_object" and "makeFaces" methods are from Blender addon: add extra objects -> 'create_mesh_object' method. Inferred from author declarations in scripts there, it might be from Pontiac. If I made a mistake here, please tell me.)
 
 >This program is free software; you can redistribute it and/or
 >modify it under the terms of the GNU General Public License
@@ -98,9 +100,7 @@ To raise a bug report, you may issue it on [here(github-issues)](https://github.
 To contact with me, please write an email to <niasw@pku.edu.cn>.
 
 ### Thanks
-Some scripts ("create_mesh_and_object" and "makeFaces" methods in `add_mesh_text_data_surface.py`) were from Blender addon [add_mesh_extra_objects](http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Add_Mesh/Add_Extra).
-
-Thank authors of that addon.
+"create_mesh_and_object" and "makeFaces" methods in `add_mesh_text_data_surface.py` were from Blender addon [add_mesh_extra_objects](http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Add_Mesh/Add_Extra). Thank Pontiac.
 
 And thank you.
 

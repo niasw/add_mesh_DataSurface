@@ -18,15 +18,13 @@
 #
 # Contributed to by
 #   Sun Sibai <niasw@pku.edu.cn>
-#
-# Referrence
-#   Blender Addon: add_mesh_extra_objects (thank them for 'create_mesh_and_object' and 'makeFaces' methods)
+#   Pontiac (for Blender Addon: add_mesh_extra_objects 'create_mesh_object' and 'createFaces' methods)
 #
 
 '''
 bl_info = {
   "name": "Text Data Surfaces",
-  "author": "Sun Sibai (niasw) <niasw@pku.edu.cn>",
+  "author": "Sun Sibai (niasw) <niasw@pku.edu.cn>, Pontiac",
   "version": (1, 0),
   "blender": (2, 71, 0),
   "location": "View3D > Add > Mesh",
