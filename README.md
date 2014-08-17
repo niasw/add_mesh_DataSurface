@@ -5,7 +5,7 @@
 
 DataSurface is a Blender Addon to create Object using Data Files.
 
-wiki <http://wiki.blender.org/index.php/Extensions:2.5/Py/Scripts/Add_Mesh/Data_Surface>
+wiki <http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Add_Mesh/Data_Surface>
 
 Copyleft (*) 2014 Sun Sibai (niasw) <niasw@pku.edu.cn>, Pontiac
 
