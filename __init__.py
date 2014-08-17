@@ -22,7 +22,7 @@
 bl_info = {
   "name": "3D Surfaces from Data Files",
   "author": "Sun Sibai (niasw) <niasw@pku.edu.cn>",
-  "version": (1, 0),
+  "version": (1, 1),
   "blender": (2, 71, 0),
   "location": "View3D > Add > Mesh",
   "description": "Create Object using Data Files.",
@@ -33,8 +33,10 @@ bl_info = {
 if "bpy" in locals():
   import imp
   imp.reload(add_mesh_text_data_surface)
+  imp.reload(add_mesh_z_data_surface)
 else:
   from . import add_mesh_text_data_surface
+  from . import add_mesh_z_data_surface
 
 import bpy
 
@@ -48,6 +50,8 @@ class INFO_MT_mesh_data_surface_add(bpy.types.Menu):
     layout.operator_context = 'INVOKE_REGION_WIN'
     layout.operator("mesh.primitive_text_data_surface",
            text="Text Data Surface")
+    layout.operator("mesh.primitive_z_data_surface",
+           text="Z(X,Y) Table Surface")
 
 # Register Function
 

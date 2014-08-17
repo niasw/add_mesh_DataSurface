@@ -23,14 +23,14 @@
 
 '''
 bl_info = {
-  "name": "Text Data Surfaces",
+  "name": "Z Data Surfaces",
   "author": "Sun Sibai (niasw) <niasw@pku.edu.cn>, Pontiac",
   "version": (1, 1),
   "blender": (2, 71, 0),
   "location": "View3D > Add > Mesh",
-  "description": "Create Objects using Text Data Files",
+  "description": "Create Objects using Z Data Files",
   "warning": "",
-  "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Add_Mesh/Data_Surface/Text_Data_Surface",
+  "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Add_Mesh/Data_Surface/Z_Data_Surface",
   "category": "Add Mesh"
 }
 '''
@@ -127,10 +127,14 @@ def makeFaces(verts1, verts2, loop=False, flip=False):
 #   filename ... plain text file of data (in matrix format)
 #   uNum ... number of vertices in U direction (horizontal in matrix)
 #   vNum ... number of vertices in V direction (veritical in matrix)
-#   dataList ... list of float/double data parsed from text file
-def loadTextData(filename):
-  uNum = 0
-  vNum = 0
+#   xList ... list of float/double data for x vector
+#   yList ... list of float/double data for y vector
+#   dataList ... list of float/double data for z matrix
+def loadZData(filename):
+  uNum = 0 # x=x(u)
+  vNum = 0 # y=y(v)
+  xList = []
+  yList = []
   dataList = []
   try:
     fileHandler = open(filename,'r')
@@ -143,9 +147,8 @@ def loadTextData(filename):
     except:
       pass
     if textDataLine:
-      vNum = vNum + 1
       uNum = len(textDataLine)
-      dataList.append([float(it) for it in textDataLine])
+      xList=[float(it) for it in textDataLine]
     textLine = fileHandler.readline()
     while textLine:
       textDataLine = re.split('[^(0-9|e|E|\+|\-|\.)]+', textLine) # use regular expression to split data
@@ -155,12 +158,17 @@ def loadTextData(filename):
       except:
         pass
       if textDataLine:
-        vNum = vNum + 1
-        if (uNum!=len(textDataLine)):
-          raise Exception("Error: Raw data matrix!",
-                          "Hint: Horizontal length of each line should be the same. ("
-                          +str(uNum)+"!="+str(len(textDataLine))+")")
-        dataList.append([float(it) for it in textDataLine])
+        if (uNum!=0):
+          vNum = vNum + 1
+          if (uNum!=len(textDataLine) - 1):
+            raise Exception("Error: Raw data matrix!",
+                            "Hint: Horizontal length of each line should be the same. ("
+                            +str(uNum)+"!="+str(len(textDataLine)-1)+")")
+          yList.append(float(textDataLine.pop(0)))
+          dataList.append([float(it) for it in textDataLine])
+        else:
+          uNum = len(textDataLine)
+          xList=[float(it) for it in textDataLine]
       textLine = fileHandler.readline()
     fileHandler.close()
   except:
@@ -168,40 +176,34 @@ def loadTextData(filename):
     self.report({'ERROR'}, "Error loading data file: "
                 + filename + " traceback: " + traceback.format_exc(limit=1))
     return 0, 0, []
-  return uNum, vNum, dataList
+  return uNum, vNum, dataList, xList, yList
 
 # Main Class
-#   xFile ... Text File of x Coordinate Data
-#   yFile ... Text File of y Coordinate Data
-#   zFile ... Text File of z Coordinate Data
-class AddTextDataSurface(bpy.types.Operator):
-    """Add a surface from text data files."""
-    bl_idname = "mesh.primitive_text_data_surface"
-    bl_label = "Add Text Data Surface"
+#   zFile ... Text File of z=f(x,y) Data
+class AddZDataSurface(bpy.types.Operator):
+    """Add a z=f(x,y) surface from table data files."""
+    bl_idname = "mesh.primitive_z_data_surface"
+    bl_label = "Add Z(X,Y) Table Surface"
     bl_options = {'REGISTER', 'UNDO', 'PRESET'}
 
-    xFile = StringProperty(name="Data File of X(U,V)",
-        description="U,V: index coordinates of nodes; X: x coordinate of nodes. (Matrix Text)",
-        default=addon_utils.paths()[0]+"/add_mesh_DataSurface/Xdata.txt", subtype="FILE_PATH")
-    yFile = StringProperty(name="Data File of Y(U,V)",
-        description="U,V: index coordinates of nodes; Y: y coordinate of nodes. (Matrix Text)",
-        default=addon_utils.paths()[0]+"/add_mesh_DataSurface/Ydata.txt", subtype="FILE_PATH")
-    zFile = StringProperty(name="Data File of Z(U,V)",
-        description="U,V: index coordinates of nodes; Z: z coordinate of nodes. (Matrix Text)",
-        default=addon_utils.paths()[0]+"/add_mesh_DataSurface/Zdata.txt", subtype="FILE_PATH")
-    loop = BoolProperty(name="Loop in U Direction",
-        description="Loop in U direction or not?",
+    zFile = StringProperty(name="Data File of Z(X,Y)",
+        description="Z=z(X,Y). (Table Text)",
+        default=addon_utils.paths()[0]+"/add_mesh_DataSurface/csvdata.csv", subtype="FILE_PATH")
+    loop = BoolProperty(name="Loop in X Direction",
+        description="Loop in X direction or not?",
         default=False)
     flip = BoolProperty(name="Flip Normal Vector",
         description="Flip the normal vector of surfaces or not?",
         default=False)
+    tran = BoolProperty(name="Switch X <-> Y vec",
+        description="Switch x <-> y, same with transposing matrix",
+        default=False)
 
     def execute(self, context):
-        xFile = self.xFile
-        yFile = self.yFile
         zFile = self.zFile
         loop = self.loop
         flip = self.flip
+        tran = self.tran
 
         verts = []
         faces = []
@@ -209,37 +211,37 @@ class AddTextDataSurface(bpy.types.Operator):
         vNum = 0
 
         try:
-          uNum, vNum, xValue = loadTextData(xFile)
-          uNu2, vNu2, yValue = loadTextData(yFile)
-          if (uNum!=uNu2):
-            raise Exception("Error: U number not match between x and y.", "Hint: number of vertices in each x,y,z data should be the same.")
-          if (vNum!=vNu2):
-            raise Exception("Error: V number not match between x and y.", "Hint: number of vertices in each x,y,z data should be the same.")
-          uNu3, vNu3, zValue = loadTextData(zFile)
-          if (uNum!=uNu3):
-            raise Exception("Error: U number not match between x and z.", "Hint: number of vertices in each x,y,z data should be the same.")
-          if (vNum!=vNu3):
-            raise Exception("Error: V number not match between x and z.", "Hint: number of vertices in each x,y,z data should be the same.")
+          uNum, vNum, zValue, xValue, yValue = loadZData(zFile)
         except:
           import traceback
-          self.report({'ERROR'}, "Error combining coordinate data: "
+          self.report({'ERROR'}, "Error parsing coordinate data: "
                        + traceback.format_exc(limit=1))
           return {'CANCELLED'}
 
         itVertIdsPre = []
-        for itU in range(uNum):
-          itVertIdsCur = []
+        if tran:
           for itV in range(vNum):
-            itVertIdsCur.append(len(verts))
-            verts.append( (xValue[itV][itU],yValue[itV][itU],zValue[itV][itU]) )
-          if len(itVertIdsPre)>0:
-            faces.extend(makeFaces(itVertIdsPre,itVertIdsCur,loop,flip))
-          itVertIdsPre = itVertIdsCur
+            itVertIdsCur = []
+            for itU in range(uNum):
+              itVertIdsCur.append(len(verts))
+              verts.append( (yValue[itV],xValue[itU],zValue[itV][itU]) )
+            if len(itVertIdsPre)>0:
+              faces.extend(makeFaces(itVertIdsPre,itVertIdsCur,loop,flip))
+            itVertIdsPre = itVertIdsCur
+        else:
+          for itU in range(uNum):
+            itVertIdsCur = []
+            for itV in range(vNum):
+              itVertIdsCur.append(len(verts))
+              verts.append( (xValue[itU],yValue[itV],zValue[itV][itU]) )
+            if len(itVertIdsPre)>0:
+              faces.extend(makeFaces(itVertIdsPre,itVertIdsCur,loop,flip))
+            itVertIdsPre = itVertIdsCur
 
         if not verts:
           return {'CANCELLED'}
 
-        the_object = create_mesh_and_object(context, verts, [], faces, "TextDataSurface")
+        the_object = create_mesh_and_object(context, verts, [], faces, "ZDataSurface")
 
         return {'FINISHED'}
 
