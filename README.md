@@ -182,6 +182,8 @@ To contact with me, please write an email to <niasw@pku.edu.cn>.
 
 Thank Noel Stoutenburg for suggestions about .csv files and Z Data Surface.
 
+Thank @squarednob for issue reporting and testing.
+
 And thank you.
 
 Best regards,
