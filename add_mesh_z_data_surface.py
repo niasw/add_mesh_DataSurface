@@ -208,6 +208,8 @@ class AddZDataSurface(bpy.types.Operator):
         description="Switch x <-> y, same with transposing matrix",
         default=False)
 
+    firstCall = True # some scripts should run only once
+
     def execute(self, context):
         zFile = self.zFile
         loop = self.loop
@@ -219,14 +221,33 @@ class AddZDataSurface(bpy.types.Operator):
         uNum = 0
         vNum = 0
 
-        successFlag = False
-        for it_path in addon_utils.paths():
-          if (successFlag):
-            break; # successfully loaded, no need to continue
+        if (self.firstCall):
+          self.firstCall = False
+          successFlag = False
+          for it_path in addon_utils.paths():
+            if (successFlag):
+              break; # successfully loaded, no need to continue
 
-          zFile = it_path+"/add_mesh_DataSurface/csvdata.csv"
-          self.zFile = zFile;
+            zFile = it_path+"/add_mesh_DataSurface/csvdata.csv"
+            self.zFile = zFile;
 
+            try:
+              uNum, vNum, zValue, xValue, yValue = loadZData(zFile)
+              successFlag = True
+            except FileNotFoundError as e:
+              successFlag = False
+            except:
+              import traceback
+              self.report({'ERROR'}, "Error parsing coordinate data: "
+                           + traceback.format_exc(limit=1))
+              return {'CANCELLED'}
+          if (not successFlag):
+            errStr = "Fail to find example data files: \nI have searched in following paths:\n"
+            for it_path in addon_utils.paths():
+              errStr += "  \t" + it_path+"/add_mesh_DataSurface/csvdata.csv\n"
+            self.report({'ERROR'}, errStr)
+            return {'CANCELLED'}
+        else:
           try:
             uNum, vNum, zValue, xValue, yValue = loadZData(zFile)
             successFlag = True
@@ -237,12 +258,6 @@ class AddZDataSurface(bpy.types.Operator):
             self.report({'ERROR'}, "Error parsing coordinate data: "
                          + traceback.format_exc(limit=1))
             return {'CANCELLED'}
-        if (not successFlag):
-          errStr = "Fail to find example data files: \nI have searched in following paths:\n"
-          for it_path in addon_utils.paths():
-            errStr += "  \t" + it_path+"/add_mesh_DataSurface/csvdata.csv\n"
-          self.report({'ERROR'}, errStr)
-          return {'CANCELLED'}
 
         itVertIdsPre = []
         if tran:

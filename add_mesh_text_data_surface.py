@@ -205,6 +205,8 @@ class AddTextDataSurface(bpy.types.Operator):
         description="Flip the normal vector of surfaces or not?",
         default=False)
 
+    firstCall = True # some scripts should run only once
+
     def execute(self, context):
         xFile = self.xFile
         yFile = self.yFile
@@ -217,18 +219,47 @@ class AddTextDataSurface(bpy.types.Operator):
         uNum = 0
         vNum = 0
 
-        successFlag = False
-        for it_path in addon_utils.paths():
-          if (successFlag):
-            break; # successfully loaded, no need to continue
+        if (self.firstCall):
+          self.firstCall = False
+          successFlag = False
+          for it_path in addon_utils.paths():
+            if (successFlag):
+              break; # successfully loaded, no need to continue
 
-          xFile = it_path+"/add_mesh_DataSurface/Xdata.txt"
-          yFile = it_path+"/add_mesh_DataSurface/Ydata.txt"
-          zFile = it_path+"/add_mesh_DataSurface/Zdata.txt"
-          self.xFile = xFile;
-          self.yFile = yFile;
-          self.zFile = zFile;
+            xFile = it_path+"/add_mesh_DataSurface/Xdata.txt"
+            yFile = it_path+"/add_mesh_DataSurface/Ydata.txt"
+            zFile = it_path+"/add_mesh_DataSurface/Zdata.txt"
+            self.xFile = xFile;
+            self.yFile = yFile;
+            self.zFile = zFile;
 
+            try:
+              uNum, vNum, xValue = loadTextData(xFile)
+              uNu2, vNu2, yValue = loadTextData(yFile)
+              if (uNum!=uNu2):
+                raise Exception("Error: U number not match between x and y.", "Hint: number of vertices in each x,y,z data should be the same.")
+              if (vNum!=vNu2):
+                raise Exception("Error: V number not match between x and y.", "Hint: number of vertices in each x,y,z data should be the same.")
+              uNu3, vNu3, zValue = loadTextData(zFile)
+              if (uNum!=uNu3):
+                raise Exception("Error: U number not match between x and z.", "Hint: number of vertices in each x,y,z data should be the same.")
+              if (vNum!=vNu3):
+                raise Exception("Error: V number not match between x and z.", "Hint: number of vertices in each x,y,z data should be the same.")
+              successFlag = True
+            except FileNotFoundError as e:
+              successFlag = False
+            except:
+              import traceback
+              self.report({'ERROR'}, "Error combining coordinate data: "
+                           + traceback.format_exc(limit=1))
+              return {'CANCELLED'}
+          if (not successFlag):
+            errStr = "Fail to find example data files: \nI have searched in following paths:\n"
+            for it_path in addon_utils.paths():
+              errStr += "  " + it_path+"/add_mesh_DataSurface/Xdata.txt\n"
+            self.report({'ERROR'}, errStr)
+            return {'CANCELLED'}
+        else:
           try:
             uNum, vNum, xValue = loadTextData(xFile)
             uNu2, vNu2, yValue = loadTextData(yFile)
@@ -241,20 +272,11 @@ class AddTextDataSurface(bpy.types.Operator):
               raise Exception("Error: U number not match between x and z.", "Hint: number of vertices in each x,y,z data should be the same.")
             if (vNum!=vNu3):
               raise Exception("Error: V number not match between x and z.", "Hint: number of vertices in each x,y,z data should be the same.")
-            successFlag = True
-          except FileNotFoundError as e:
-            successFlag = False
           except:
             import traceback
             self.report({'ERROR'}, "Error combining coordinate data: "
                          + traceback.format_exc(limit=1))
             return {'CANCELLED'}
-        if (not successFlag):
-          errStr = "Fail to find example data files: \nI have searched in following paths:\n"
-          for it_path in addon_utils.paths():
-            errStr += "  \t" + it_path+"/add_mesh_DataSurface/Xdata.txt\n"
-          self.report({'ERROR'}, errStr)
-          return {'CANCELLED'}
 
         itVertIdsPre = []
         for itU in range(uNum):

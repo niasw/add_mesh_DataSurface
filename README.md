@@ -160,7 +160,17 @@ Check if you have installed this addon. Make sure the ".py" files are in the add
 * " ... "
 * "FileNotFoundError: [Errno 2] No such file or directory: '.../add_mesh_Surface/Xdata.txt' "
 
-This message means Blender did not find the data files. When you downloaded it as a zip file, did you extract the folder as `add_mesh_DataSurface` instead of the default `add_mesh_DataSurface-master`? If not, please rename this folder under addon path as `add_mesh_DataSurface`.
+or
+
+* "Fail to find example data files:"
+* "I have searched in following paths:"
+* "  .../add_mesh_DataSurface/Xdata.txt"
+
+These messages mean Blender did not find the data files. When you downloaded it as a zip file, did you extract the folder as `add_mesh_DataSurface` instead of the default `add_mesh_DataSurface-master`? If not, please rename this folder under addon path as `add_mesh_DataSurface`.
+
+* "Browser Button fails to work ... "
+
+Reset it: Delete the current object and re-add it please.
 
 ## Support
 To raise a bug report, you may issue it on [here(github-issues)](https://github.com/niasw/add_mesh_DataSurface/issues), or [here(developer.blender.org-task)](https://developer.blender.org/T41352).
