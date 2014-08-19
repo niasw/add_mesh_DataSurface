@@ -206,8 +206,10 @@ class AddTextDataSurface(bpy.types.Operator):
         default=False)
 
     firstCall = True # some scripts should run only once
+    newError = False # When configuring browser, 'execute' should be paused
 
     def execute(self, context):
+      if (not self.newError):
         xFile = self.xFile
         yFile = self.yFile
         zFile = self.zFile
@@ -252,12 +254,14 @@ class AddTextDataSurface(bpy.types.Operator):
               import traceback
               self.report({'ERROR'}, "Error combining coordinate data: "
                            + traceback.format_exc(limit=1))
+              self.newError = True
               return {'CANCELLED'}
           if (not successFlag):
             errStr = "Fail to find example data files: \nI have searched in following paths:\n"
             for it_path in addon_utils.paths():
               errStr += "  " + it_path+"/add_mesh_DataSurface/Xdata.txt\n"
             self.report({'ERROR'}, errStr)
+            self.newError = True
             return {'CANCELLED'}
         else:
           try:
@@ -276,6 +280,7 @@ class AddTextDataSurface(bpy.types.Operator):
             import traceback
             self.report({'ERROR'}, "Error combining coordinate data: "
                          + traceback.format_exc(limit=1))
+            self.newError = True
             return {'CANCELLED'}
 
         itVertIdsPre = []
@@ -289,9 +294,13 @@ class AddTextDataSurface(bpy.types.Operator):
           itVertIdsPre = itVertIdsCur
 
         if not verts:
+          newError = True
           return {'CANCELLED'}
 
         the_object = create_mesh_and_object(context, verts, [], faces, "TextDataSurface")
 
         return {'FINISHED'}
-
+      else:
+        self.newError = False
+        # self.report({'INFO'}, "Edit Over? Try it again.")
+        return {'FINISHED'}

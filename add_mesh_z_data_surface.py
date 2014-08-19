@@ -209,8 +209,10 @@ class AddZDataSurface(bpy.types.Operator):
         default=False)
 
     firstCall = True # some scripts should run only once
+    newError = False # When configuring browser, 'execute' should be paused
 
     def execute(self, context):
+      if (not self.newError):
         zFile = self.zFile
         loop = self.loop
         flip = self.flip
@@ -240,12 +242,14 @@ class AddZDataSurface(bpy.types.Operator):
               import traceback
               self.report({'ERROR'}, "Error parsing coordinate data: "
                            + traceback.format_exc(limit=1))
+              self.newError = True
               return {'CANCELLED'}
           if (not successFlag):
             errStr = "Fail to find example data files: \nI have searched in following paths:\n"
             for it_path in addon_utils.paths():
               errStr += "  \t" + it_path+"/add_mesh_DataSurface/csvdata.csv\n"
             self.report({'ERROR'}, errStr)
+            self.newError = True
             return {'CANCELLED'}
         else:
           try:
@@ -257,6 +261,7 @@ class AddZDataSurface(bpy.types.Operator):
             import traceback
             self.report({'ERROR'}, "Error parsing coordinate data: "
                          + traceback.format_exc(limit=1))
+            self.newError = True
             return {'CANCELLED'}
 
         itVertIdsPre = []
@@ -280,9 +285,13 @@ class AddZDataSurface(bpy.types.Operator):
             itVertIdsPre = itVertIdsCur
 
         if not verts:
+          self.newError = True
           return {'CANCELLED'}
 
         the_object = create_mesh_and_object(context, verts, [], faces, "ZDataSurface")
 
         return {'FINISHED'}
-
+      else:
+        self.newError = False
+        # self.report({'INFO'}, "Edit Over? Try it again.")
+        return {'FINISHED'}
