@@ -140,9 +140,10 @@ def loadZData(filename):
     fileHandler = open(filename,'r')
     fileHandler.seek(0)
     textLine = fileHandler.readline()
-    textLine = re.sub('^(e|E)+', '', textLine) # remove confusing labels
+    textLine = re.sub('(e|E)(e|E)+', '', textLine) # remove confusing labels
     textLine = re.sub('[^(0-9|\.)](e|E)', '', textLine) # remove confusing labels
     textLine = re.sub('(\+|\-)[^(0-9|\.)]', '', textLine) # remove confusing labels
+    textLine = re.sub('^(e|E)+', '', textLine) # remove confusing labels
     textDataLine = re.split('[^(0-9|e|E|\+|\-|\.)]+', textLine) # use regular expression to split data
     try:
       while True:
@@ -154,9 +155,10 @@ def loadZData(filename):
       xList=[float(it) for it in textDataLine]
     textLine = fileHandler.readline()
     while textLine:
-      textLine = re.sub('^(e|E)+', '', textLine) # remove confusing labels
+      textLine = re.sub('(e|E)(e|E)+', '', textLine) # remove confusing labels
       textLine = re.sub('[^(0-9|\.)](e|E)', '', textLine) # remove confusing labels
       textLine = re.sub('(\+|\-)[^(0-9|\.)]', '', textLine) # remove confusing labels
+      textLine = re.sub('^(e|E)+', '', textLine) # remove confusing labels
       textDataLine = re.split('[^(0-9|e|E|\+|\-|\.)]+', textLine) # use regular expression to split data
       try:
         while True:
