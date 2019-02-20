@@ -40,7 +40,7 @@ Then copy directory `add_mesh_DataSurface` to Blender addon path. If you don't k
 
 To enable this addon, please open your Blender.
 * Click `Files` > `User Preferences ...` > `Addons` > `Add Mesh`.
-* Find ![File:niasw_add_mesh_DataSurface07.png‎](http://wiki.blender.org/uploads/0/0f/Niasw_add_mesh_DataSurface07.png) <html><br/></html> and click the right checkbox
+* Find ![File:niasw_add_mesh_DataSurface07.png‎](https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface07.png) <html><br/></html> and click the right checkbox
 
 ## Instructions
 There are two modules in this addon:
@@ -65,7 +65,7 @@ To show how to use this addon, I will give examples.
 * In the `3D View` block, press `Shift+A` > `Mesh` > `Data Surface` > `Text Data Surface`.
 <html><br/></html> Then a twisted ribbon-like mesh shows.
 
-![File:niasw_add_mesh_DataSurface01.png|340px|](http://wiki.blender.org/uploads/thumb/e/ef/Niasw_add_mesh_DataSurface01.png/340px-Niasw_add_mesh_DataSurface01.png) ![File:niasw_add_mesh_DataSurface02.png‎|340px|](http://wiki.blender.org/uploads/thumb/9/9a/Niasw_add_mesh_DataSurface02.png/340px-Niasw_add_mesh_DataSurface02.png)
+![File:niasw_add_mesh_DataSurface01.png|340px|](https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface01.png) ![File:niasw_add_mesh_DataSurface02.png‎|340px|](https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface02.png)
 
 
 The coordinates of vertices are from data files `Xdata.txt`, `Ydata.txt` and `Zdata.txt`.
@@ -74,7 +74,7 @@ These data can be generated from Octave/Matlab script `example.m`.
 
 To change the data files, clicking the browsing buttons.
 
-![File:niasw_add_mesh_DataSurface0A.png](http://wiki.blender.org/uploads/6/63/Niasw_add_mesh_DataSurface0A.png)
+![File:niasw_add_mesh_DataSurface0A.png](https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface0A.png)
 
 
 As for the `loop` and `flip` checkbox, try them to know what they represent.
@@ -83,15 +83,16 @@ As for the `loop` and `flip` checkbox, try them to know what they represent.
 
 <table>
  <tr>
-  <th><img alt="File:niasw_add_mesh_DataSurface03_1.png‎" src="http://wiki.blender.org/uploads/a/a9/Niasw_add_mesh_DataSurface03_1.png"/></th>
-  <th><img alt="File:niasw_add_mesh_DataSurface04_1.png‎" src="http://wiki.blender.org/uploads/7/72/Niasw_add_mesh_DataSurface04_1.png"/></th>
-  <th><img alt="File:niasw_add_mesh_DataSurface05_1.png‎" src="http://wiki.blender.org/uploads/e/e7/Niasw_add_mesh_DataSurface05_1.png"/></th>
+  <th><img alt="File:niasw_add_mesh_DataSurface03_1.png‎" src="https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface03_1.png"/></th>
+  <th><img alt="File:niasw_add_mesh_DataSurface04_1.png‎" src="https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface04_1.png"/></th>
+  <th><img alt="File:niasw_add_mesh_DataSurface05_1.png‎" src="https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface05_1.png"/></th>
  </tr><tr>
-  <td><img alt="File:niasw_add_mesh_DataSurface03_2.png‎|142px|" src="http://wiki.blender.org/uploads/thumb/e/e0/Niasw_add_mesh_DataSurface03_2.png/142px-Niasw_add_mesh_DataSurface03_2.png"/></td>
-  <td><img alt="File:niasw_add_mesh_DataSurface04_2.png‎|142px|" src="http://wiki.blender.org/uploads/thumb/c/c3/Niasw_add_mesh_DataSurface04_2.png/142px-Niasw_add_mesh_DataSurface04_2.png"/></td>
-  <td><img alt="File:niasw_add_mesh_DataSurface05_2.png‎|142px|" src="http://wiki.blender.org/uploads/thumb/f/f2/Niasw_add_mesh_DataSurface05_2.png/142px-Niasw_add_mesh_DataSurface05_2.png"/></td>
+  <td><img alt="File:niasw_add_mesh_DataSurface03_2.png‎|142px|" src="https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface03_2.png"/></td>
+  <td><img alt="File:niasw_add_mesh_DataSurface04_2.png‎|142px|" src="https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface04_2.png"/></td>
+  <td><img alt="File:niasw_add_mesh_DataSurface05_2.png‎|142px|" src="https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface05_2.png"/></td>
  </tr>
 </table>
+
 
 ### example for Z Data Surface
 * In the `3D View` block, press `Shift+A` > `Mesh` > `Data Surface` > `Z(X,Y) Table Surface`.
