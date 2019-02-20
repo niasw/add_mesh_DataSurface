@@ -97,7 +97,7 @@ As for the `loop` and `flip` checkbox, try them to know what they represent.
 * In the `3D View` block, press `Shift+A` > `Mesh` > `Data Surface` > `Z(X,Y) Table Surface`.
 <html><br/></html> Then a floating ribbon-like mesh shows.
 
-![File:niasw_add_mesh_DataSurface0B.png|340px|](http://wiki.blender.org/uploads/thumb/d/da/Niasw_add_mesh_DataSurface0B.png/340px-Niasw_add_mesh_DataSurface0B.png) ![File:niasw_add_mesh_DataSurface0C.png‎|340px|](http://wiki.blender.org/uploads/thumb/7/7a/Niasw_add_mesh_DataSurface0C.png/340px-Niasw_add_mesh_DataSurface0C.png)
+![File:niasw_add_mesh_DataSurface0B.png|340px|](https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface0B.png) ![File:niasw_add_mesh_DataSurface0C.png‎|340px|](https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface0C.png)
 
 
 The coordinates of vertices are from table data file `csvdata.csv`.
@@ -106,42 +106,44 @@ To change the data files, clicking the browsing button.
 
 Plain text table is also OK.
 
-![File:niasw_add_mesh_DataSurface12.png](http://wiki.blender.org/uploads/3/37/Niasw_add_mesh_DataSurface12.png)
+![File:niasw_add_mesh_DataSurface12.png](https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface12.png)
 
 The .csv file can be exported from spreadsheet programs such as Excel and LibreOffice Calc.
 
 The structure of the table in .csv file is shown below:
 
-![File:niasw_add_mesh_DataSurface13.png|680px](http://wiki.blender.org/uploads/thumb/d/d6/Niasw_add_mesh_DataSurface13.png/680px-Niasw_add_mesh_DataSurface13.png)
+![File:niasw_add_mesh_DataSurface13.png|680px](https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface13.png)
 
 There are 3 boolean options in Z Data Surface. `loop` and `flip` are like those in Text Data Surface.
 
 <table>
  <tr>
-  <th><img alt="File:niasw_add_mesh_DataSurface0D_1.png‎" src="http://wiki.blender.org/uploads/1/1c/Niasw_add_mesh_DataSurface0D_1.png"/></th>
-  <th><img alt="File:niasw_add_mesh_DataSurface0E_1.png‎" src="http://wiki.blender.org/uploads/4/4b/Niasw_add_mesh_DataSurface0E_1.png"/></th>
-  <th><img alt="File:niasw_add_mesh_DataSurface0F_1.png‎" src="http://wiki.blender.org/uploads/9/92/Niasw_add_mesh_DataSurface0F_1.png"/></th>
+  <th><img alt="File:niasw_add_mesh_DataSurface0D_1.png‎" src="https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface0D_1.png"/></th>
+  <th><img alt="File:niasw_add_mesh_DataSurface0E_1.png‎" src="https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface0E_1.png"/></th>
+  <th><img alt="File:niasw_add_mesh_DataSurface0F_1.png‎" src="https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface0F_1.png"/></th>
  </tr><tr>
-  <td><img alt="File:niasw_add_mesh_DataSurface0D_2.png‎|140px|" src="http://wiki.blender.org/uploads/thumb/8/87/Niasw_add_mesh_DataSurface0D_2.png/140px-Niasw_add_mesh_DataSurface0D_2.png"/></td>
-  <td><img alt="File:niasw_add_mesh_DataSurface0E_2.png‎|140px|" src="http://wiki.blender.org/uploads/thumb/9/90/Niasw_add_mesh_DataSurface0E_2.png/140px-Niasw_add_mesh_DataSurface0E_2.png"/></td>
-  <td><img alt="File:niasw_add_mesh_DataSurface0F_2.png‎|140px|" src="http://wiki.blender.org/uploads/thumb/8/8f/Niasw_add_mesh_DataSurface0F_2.png/140px-Niasw_add_mesh_DataSurface0F_2.png"/></td>
+  <td><img alt="File:niasw_add_mesh_DataSurface0D_2.png‎|140px|" src="https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface0D_2.png"/></td>
+  <td><img alt="File:niasw_add_mesh_DataSurface0E_2.png‎|140px|" src="https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface0E_2.png"/></td>
+  <td><img alt="File:niasw_add_mesh_DataSurface0F_2.png‎|140px|" src="https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface0F_2.png"/></td>
  </tr>
 </table>
+
 
 The `tran` option is to switch x axis with y axis. It is the same with transposing the whole data table. By combining `tran` function and `loop` function, we can close the surface mesh either in x direction or y direction.
 
 <table>
  <tr>
-  <th><img alt="File:niasw_add_mesh_DataSurface10_1.png‎" src="http://wiki.blender.org/uploads/b/b4/Niasw_add_mesh_DataSurface10_1.png"/></th>
-  <th><img alt="File:niasw_add_mesh_DataSurface11_1.png‎" src="http://wiki.blender.org/uploads/6/64/Niasw_add_mesh_DataSurface11_1.png"/></th>
+  <th><img alt="File:niasw_add_mesh_DataSurface10_1.png‎" src="https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface10_1.png"/></th>
+  <th><img alt="File:niasw_add_mesh_DataSurface11_1.png‎" src="https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface11_1.png"/></th>
  </tr><tr>
-  <td><img alt="File:niasw_add_mesh_DataSurface10_2.png‎|140px|" src="http://wiki.blender.org/uploads/thumb/e/e3/Niasw_add_mesh_DataSurface10_2.png/140px-Niasw_add_mesh_DataSurface10_2.png"/></td>
-  <td><img alt="File:niasw_add_mesh_DataSurface11_2.png‎|140px|" src="http://wiki.blender.org/uploads/thumb/4/43/Niasw_add_mesh_DataSurface11_2.png/140px-Niasw_add_mesh_DataSurface11_2.png"/></td>
+  <td><img alt="File:niasw_add_mesh_DataSurface10_2.png‎|140px|" src="https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface10_2.png"/></td>
+  <td><img alt="File:niasw_add_mesh_DataSurface11_2.png‎|140px|" src="https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface11_2.png"/></td>
  </tr><tr>
-  <td><img alt="File:niasw_add_mesh_DataSurface10_3.png‎|140px|" src="http://wiki.blender.org/uploads/thumb/8/86/Niasw_add_mesh_DataSurface10_3.png/140px-Niasw_add_mesh_DataSurface10_3.png"/></td>
-  <td><img alt="File:niasw_add_mesh_DataSurface11_3.png‎|140px|" src="http://wiki.blender.org/uploads/thumb/8/8b/Niasw_add_mesh_DataSurface11_3.png/140px-Niasw_add_mesh_DataSurface11_3.png"/></td>
+  <td><img alt="File:niasw_add_mesh_DataSurface10_3.png‎|140px|" src="https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface10_3.png"/></td>
+  <td><img alt="File:niasw_add_mesh_DataSurface11_3.png‎|140px|" src="https://raw.githubusercontent.com/niasw/add_mesh_DataSurface/master/wiki/res/niasw_add_mesh_DataSurface11_3.png"/></td>
  </tr>
 </table>
+
 
 ## Notes
 If you have further requirements, you can fork the source codes and develop your own one. To know how this addon works, please go to page [Text Data Surface](http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Add_Mesh/Data_Surface/Text_Data_Surface) and [Z Data Surface](http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Add_Mesh/Data_Surface/Z_Data_Surface).
