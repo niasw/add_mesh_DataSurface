@@ -34,9 +34,11 @@ if "bpy" in locals():
   import imp
   imp.reload(add_mesh_text_data_surface)
   imp.reload(add_mesh_z_data_surface)
+  imp.reload(add_mesh_text_data_points)
 else:
   from . import add_mesh_text_data_surface
   from . import add_mesh_z_data_surface
+  from . import add_mesh_text_data_points
 
 import bpy
 
@@ -52,6 +54,8 @@ class INFO_MT_mesh_data_surface_add(bpy.types.Menu):
            text="Text Data Surface")
     layout.operator("mesh.primitive_z_data_surface",
            text="Z(X,Y) Table Surface")
+    layout.operator("mesh.primitive_text_data_points",
+           text="Text Data Points")
 
 # Register Function
 
