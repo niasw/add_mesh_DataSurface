@@ -2,7 +2,9 @@
 
 --- Create 3D Surfaces from Data Files
 =====
+# !!! This addon is out-of-date since big change of Blender 2.80. The new version for 2.80 above has been rewrote into <https://github.com/niasw/import_mesh_CSV_CoordSurface> !!!
 
+=====
 DataSurface is a Blender Addon to create Object using Data Files.
 
 wiki <http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Add_Mesh/Data_Surface>
